@@ -1,7 +1,7 @@
 {
  "built": "2026-11-03",
  "sport": "basketball",
- "task": "say which of two shots, each stopped at the release, is more likely to score",
+ "task": "say which of two shots, each stopped at the release, has the higher expected points",
  "items": [
   {
    "id": "v001",
