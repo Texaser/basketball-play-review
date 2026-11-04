@@ -1,0 +1,657 @@
+{
+ "built": "2026-11-03",
+ "sport": "basketball",
+ "task": "say which of two shots, each stopped at the release, is the more valuable shot",
+ "items": [
+  {
+   "id": "v001",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v001_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v001_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v002",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v002_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v002_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v003",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v003_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v003_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v004",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v004_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v004_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v005",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v005_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v005_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v006",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v006_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v006_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v007",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v007_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v007_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v008",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v008_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v008_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v009",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v009_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v009_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v010",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v010_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v010_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v011",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v011_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v011_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v012",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v012_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v012_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v013",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v013_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v013_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v014",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v014_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v014_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v015",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v015_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v015_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v016",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v016_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v016_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v017",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v017_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v017_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v018",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v018_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v018_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v019",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v019_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v019_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v020",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v020_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v020_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v021",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v021_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v021_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v022",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v022_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v022_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v023",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v023_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v023_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v024",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v024_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v024_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v025",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v025_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v025_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v026",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v026_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v026_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v027",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v027_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v027_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v028",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v028_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v028_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v029",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v029_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v029_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v030",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v030_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v030_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v031",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v031_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v031_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v032",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v032_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v032_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v033",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v033_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v033_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v034",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v034_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v034_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v035",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v035_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v035_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v036",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v036_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v036_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v037",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v037_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v037_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v038",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v038_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v038_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v039",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v039_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v039_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v040",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v040_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v040_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v041",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v041_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v041_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v042",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v042_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v042_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v043",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v043_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v043_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v044",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v044_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v044_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v045",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v045_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v045_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v046",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v046_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v046_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v047",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v047_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v047_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v048",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v048_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v048_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v049",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v049_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v049_B.mp4"
+    }
+   ]
+  },
+  {
+   "id": "v050",
+   "videos": [
+    {
+     "letter": "A",
+     "src": "videos/v050_A.mp4"
+    },
+    {
+     "letter": "B",
+     "src": "videos/v050_B.mp4"
+    }
+   ]
+  }
+ ]
+}

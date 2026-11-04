@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>From this starting situation, which play would you recommend the team attempt, accounting for execution difficulty?</title>
+<style>
+:root{
+  --paper:#F1F4F4; --surface:#fff; --ink:#14191a; --muted:#58696c; --rule:#c9d6d7; --rule-soft:#e1eaea;
+  --accent:#0d5c6b; --accent-wash:#dcedef; --video:#0a0e0f; --pick:#1d6fa5; --pick-wash:#dbeaf5; --warn:#a93b2c;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#0e1416; --surface:#151d1f; --ink:#e3ecec; --muted:#93a7aa; --rule:#263336; --rule-soft:#1c2628;
+  --accent:#5dbece; --accent-wash:#13333a; --video:#000; --pick:#6fb6e4; --pick-wash:#12293a; --warn:#e88b79;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:min(2000px,98vw);margin:0 auto;padding:1rem 1rem 4rem;display:flex;flex-direction:column;gap:.9rem}
+.tabs{display:flex;gap:.3rem;flex-wrap:wrap}
+.tabs a{text-decoration:none;color:var(--muted);font:600 .82rem/1 ui-monospace,monospace;letter-spacing:.04em;padding:.5rem .8rem;border:1px solid var(--rule-soft);border-bottom:none;border-radius:4px 4px 0 0;background:var(--surface)}
+.tabs a.cur{color:var(--accent);border-color:var(--accent);background:var(--accent-wash)}
+header{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;align-items:center;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:.6rem}
+header .who{gap:.9rem}
+#replay{padding:.5rem 1rem;font-size:.95rem}
+h1{margin:0;font-size:1.15rem;letter-spacing:-.01em}
+.meta{font:500 .78rem/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);letter-spacing:.03em}
+.who{display:flex;align-items:center;gap:.5rem;font-size:.86rem}
+.who input{width:11rem}
+.who.missing input{border-color:var(--warn);box-shadow:0 0 0 2px color-mix(in srgb,var(--warn) 30%,transparent)}
+.bar{height:5px;background:var(--rule-soft);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
+.layout{display:flex;flex-direction:column;gap:1rem}
+.side{display:flex;flex-direction:column;gap:.7rem}
+.answer{display:flex;flex-direction:column;gap:.6rem}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.cards.one{max-width:880px;margin:0 auto}
+@media (max-width:800px){.cards{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--rule-soft);border-radius:5px;padding:.45rem;display:flex;flex-direction:column;gap:.4rem;min-width:0;border-left:5px solid var(--rule-soft)}
+.card.best{border-left-color:var(--pick);outline:2px solid var(--pick);outline-offset:1px}
+.card.playing .badge{background:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.card.playing{border-left-color:var(--accent)}
+.card .top{display:flex;align-items:center;gap:.5rem}
+.badge{width:1.8rem;height:1.8rem;flex:none;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:var(--paper);font:700 .9rem/1 ui-monospace,monospace}
+.card.best .badge{background:var(--pick)}
+.vlabel{font:600 .8rem/1 ui-monospace,monospace;color:var(--muted);letter-spacing:.03em}
+video{width:100%;display:block;background:var(--video);border-radius:3px}
+button{font:inherit;cursor:pointer;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:3px;padding:.42rem .85rem}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.pickbtn{width:100%;font-weight:600}
+.pickbtn[aria-pressed="true"]{background:var(--pick);color:#fff;border-color:transparent}
+fieldset{border:1px solid var(--rule-soft);background:var(--surface);border-radius:4px;margin:0;padding:.75rem .9rem}
+legend{font:600 .72rem/1 ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);padding:0 .3rem}
+.first{width:100%;border-radius:3px;display:block;background:var(--video)}
+.task p{margin:0}
+.task p.key{font-weight:600;font-size:1.05rem}
+.bestrow{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:.4rem;margin-top:.6rem}
+.bestrow button{font:700 .84rem/1.2 ui-monospace,monospace;padding:.6rem .2rem}
+.bestrow button[aria-pressed="true"]{background:var(--pick);color:#fff;border-color:transparent}
+.bestrow.five button:nth-child(-n+2){grid-column:span 3}
+.bestrow.five button:nth-child(n+3){grid-column:span 2}
+textarea,input[type=text]{width:100%;font:inherit;padding:.42rem .55rem;border:1px solid var(--rule);border-radius:3px;background:var(--surface);color:var(--ink)}
+textarea{min-height:3.2rem;resize:vertical;margin-top:0}
+.nav{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.nav button{padding:.38rem .6rem;font-size:.86rem}
+.nav .spacer{flex:1}
+.pill{font:500 .75rem/1 ui-monospace,monospace;padding:.3rem .55rem;border-radius:999px;background:var(--accent-wash);color:var(--accent)}
+.status{font-size:.8rem;color:var(--muted);min-height:1.2em}
+.status.warn{color:var(--warn)}
+.status.ok{color:var(--pick)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(3rem,1fr));gap:.25rem}
+.grid button{padding:.3rem 0;font:500 .72rem/1 ui-monospace,monospace}
+.grid button.done{background:var(--accent-wash);border-color:transparent;color:var(--accent)}
+.grid button.cur{outline:2px solid var(--accent);outline-offset:1px}
+details{background:var(--surface);border:1px solid var(--rule-soft);border-radius:4px;padding:.55rem .9rem}
+summary{cursor:pointer;font-size:.88rem;color:var(--muted)}
+.hint{font-size:.82rem;color:var(--muted);margin:.4rem 0 0}
+kbd{font:600 .74rem/1 ui-monospace,monospace;border:1px solid var(--rule);border-bottom-width:2px;border-radius:3px;padding:.1rem .3rem;background:var(--paper)}
+.intro{background:var(--surface);border-left:5px solid var(--accent);padding:.6rem .9rem;border-radius:4px;font-size:.9rem}
+.intro p{margin:.2rem 0}
+button.primary{background:var(--pick);color:#fff;border-color:transparent;font-weight:600}
+.modal{position:fixed;inset:0;background:rgba(10,14,15,.55);display:none;place-items:center;z-index:50}
+.modal.open{display:grid}
+.modal .box{background:var(--surface);color:var(--ink);border-radius:6px;padding:1.3rem 1.5rem;width:min(26rem,92vw);display:flex;flex-direction:column;gap:.8rem;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.modal h2{margin:0;font-size:1.05rem}
+.modal input{font-size:1.05rem;padding:.55rem .7rem}
+/* mode marker on <body> is 'mode-public' (never 'public': body.public would match .public and hide itself) */
+.wrap .public{display:none}
+body.mode-public .wrap .public{display:block}
+body.mode-public .wrap .server{display:none}
+.wrap .tabs{display:none}
+body.mode-public .wrap .tabs{display:flex}
+</style></head><body>
+<div class="modal" id="namebox"><form class="box" id="nameform">
+  <h2>Please enter your name</h2>
+  <input id="rater2" type="text" placeholder="first name" autocomplete="off" autofocus>
+  <button class="primary" type="submit">Start</button>
+</form></div>
+<div class="wrap">
+<nav class="tabs"><a href="./" class="cur">1 · Better play</a><a href="./realism/">2 · Realism</a><a href="./value/">3 · Shot value</a></nav>
+<header>
+  <div class="meta" id="sub">loading…</div>
+  <div class="who" id="who"><label for="rater">Please enter your name</label><input id="rater" type="text" placeholder="first name" autocomplete="off"></div>
+  <div class="who"><button id="replay" class="primary">&#9654; Play again</button><span class="meta" id="count"></span></div>
+</header>
+<div class="bar"><i id="prog"></i></div>
+
+<div class="layout">
+<div class="main"><div class="cards " id="cards"></div></div>
+
+<aside class="side">
+<div class="answer">
+<fieldset class="task">
+  <p class="key">From this starting situation, which play would you recommend the team attempt, accounting for execution difficulty?</p>
+  <div class="bestrow " id="best"></div>
+</fieldset>
+<textarea id="note" placeholder="Why, or what made it hard (optional)"></textarea>
+</div>
+
+<div class="nav">
+  <button id="prev">&larr; Previous</button>
+  <button id="next">Next &rarr;</button>
+  <button id="skip">Next unjudged</button>
+  <span class="spacer"></span>
+  <span class="pill" id="saved">…</span>
+</div>
+
+<fieldset class="public">
+  <legend>When you are done</legend>
+  <div class="nav"><button id="submit" class="primary">Submit my answers</button><button id="json">Download my answers</button></div>
+</fieldset>
+<div class="nav server"><button id="csv">Download CSV</button></div>
+<div class="status" id="status"></div>
+<div class="grid" id="grid"></div>
+<details><summary>Keys</summary>
+  <p class="hint"><kbd>A</kbd> / <kbd>B</kbd> (or <kbd>1</kbd> / <kbd>2</kbd>) recommend · <kbd>N</kbd> or <kbd>0</kbd> no preference · <kbd>Space</kbd> play again · <kbd>&larr;</kbd> <kbd>&rarr;</kbd> previous / next · <kbd>S</kbd> next unjudged.</p>
+</details>
+</aside>
+</div>
+</div>
+<script>
+// Generated by human_eval_bball/studies_common.py (study bball_pair_v1). SERVER = true: served by serve.py, answers POSTed to /save under
+// the reviewer's name, choices.json polled. SERVER = false: the public copy, answers in localStorage (one record per name),
+// sent as ONE submission per press of "Submit" to SUBMIT_URL (Formspree, JSON over fetch) with the study field.
+const SERVER = false;
+const SUBMIT_URL = "https://formspree.io/f/xdkeaypg";
+const STUDY = "bball_pair_v1";
+const OPTIONS = [["A", "A"], ["tie", "No preference"], ["B", "B"]];      // [[value, label], ...]; a value equal to a card letter also puts a button under that card
+const KEYS = {"a": "A", "1": "A", "b": "B", "2": "B", "n": "tie", "0": "tie"};            // key -> value
+const CARD_BTN = null;     // label template with {L}, or null
+let M = null, R = {}, i = 0, dirty = false, autoSent = false;
+const $ = s => document.querySelector(s);
+const el = (t, a = {}, kids = []) => { const n = document.createElement(t);
+  for (const [k, v] of Object.entries(a)) k === "class" ? n.className = v : n.setAttribute(k, v);
+  for (const c of [].concat(kids)) n.append(c); return n; };
+if (!SERVER) document.body.classList.add("mode-public");
+
+const rater = () => ($("#rater").value || "").trim();
+const key = sid => SERVER ? `${rater()}::${sid}` : sid;
+const LS = () => "bball_pair::" + rater();
+function cur(){ return M.items[i]; }
+function rec(){ const k = key(cur().id); return R[k] || (R[k] = { best: null, note: "" }); }
+function done(sid){ const r = R[key(sid)]; return !!(r && r.best); }
+function nDone(){ return M.items.filter(x => done(x.id)).length; }
+function mine(){ if (!SERVER) return R; const p = rater() + "::"; return Object.fromEntries(Object.entries(R).filter(([k, v]) => k.startsWith(p) && v && v.best)); }
+function status(t, warn){ $("#status").textContent = t; $("#status").classList.toggle("warn", !!warn); $("#status").classList.toggle("ok", warn === false); }
+
+function load(){ if (SERVER) return; try { R = JSON.parse(localStorage.getItem(LS()) || "{}"); } catch (e) { R = {}; } }
+async function save(){
+  if (!rater()) return;
+  if (!SERVER){
+    try { localStorage.setItem(LS(), JSON.stringify(R)); $("#saved").textContent = `kept ${nDone()}/${M.items.length}`; dirty = false; }
+    catch (e) { $("#saved").textContent = "cannot save in this browser"; }
+    return;
+  }
+  const payload = {}; for (const [k, v] of Object.entries(mine())) payload[k] = Object.assign({}, v, { by: rater(), situation: k.split("::")[1] });
+  try {
+    const res = await fetch("/save", { method: "POST", headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ built: M.built, saved_at: new Date().toISOString(), ratings: payload }) });
+    const j = await res.json();
+    if (j.ratings) adopt(j.ratings);
+    $("#saved").textContent = `saved ${nDone()}/${M.items.length}`; dirty = false;
+  } catch (e) { $("#saved").textContent = "saved locally only"; }
+  try { localStorage.setItem("bball_pair_server", JSON.stringify(mine())); } catch (e) {}
+}
+function adopt(remote){
+  const keep = M ? key(cur().id) : null;
+  for (const [k, v] of Object.entries(remote)) if (k !== keep) R[k] = v;
+  if (M) draw();
+}
+async function poll(){
+  if (!SERVER) return;
+  try { const s = await (await fetch("choices.json", { cache: "no-store" })).json(); adopt(s.ratings || {}); } catch (e) {}
+}
+function askName(){ $("#namebox").classList.add("open"); $("#rater2").value = rater(); setTimeout(() => $("#rater2").focus(), 50); }
+function needName(){
+  if (rater()) return false;
+  askName(); return true;
+}
+function setBest(L){
+  if (needName()) return;
+  const r = rec(); r.best = (r.best === L) ? null : L; r.at = new Date().toISOString();
+  draw(); save();
+  if (!SERVER && r.best && nDone() === M.items.length && !autoSent){ autoSent = true; submit(); }
+}
+
+function answers(){
+  return { name: rater(), study: STUDY, built: M.built, n_done: nDone(), n_total: M.items.length, submitted_at: new Date().toISOString(),
+           picks: M.items.filter(it => done(it.id)).map(it => { const r = R[key(it.id)]; return { situation: it.id, best: r.best, note: r.note || "", at: r.at || "" }; }) };
+}
+async function submit(){
+  if (needName()) return;
+  const a = answers();
+  if (!a.n_done){ status("Nothing to submit yet.", true); return; }
+  if (SUBMIT_URL.includes("REPLACE_ME")){ status("Submitting is not set up on this copy. Please download your answers and email the file.", true); return; }
+  $("#submit").disabled = true; status("Sending…");
+  try {
+    const res = await fetch(SUBMIT_URL, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ name: a.name, study: a.study, n_done: a.n_done, n_total: a.n_total, submitted_at: a.submitted_at, built: a.built,
+                             picks: JSON.stringify(a.picks), _subject: `basketball pair study: ${a.name} ${a.n_done}/${a.n_total}` }) });
+    const j = await res.json().catch(() => ({}));
+    if (res.ok && j.ok !== false){
+      status(`Submitted ${a.n_done} of ${a.n_total} answers as ${a.name}. Thank you!`, false);
+      try { localStorage.setItem(LS() + "::submitted", a.submitted_at); } catch (e) {}
+    } else {
+      const why = j.errors ? j.errors.map(e => e.message).join("; ") : `HTTP ${res.status}`;
+      status(`Submitting failed (${why}). Please download your answers and email the file.`, true);
+    }
+  } catch (e) { status("Submitting failed (no connection?). Please download your answers and email the file.", true); }
+  $("#submit").disabled = false;
+}
+
+function buildCards(){
+  const host = $("#cards"); host.textContent = "";
+  cur().videos.forEach(v => {
+    const card = el("div", { class: "card", "data-l": v.letter });
+    const vid = el("video", { muted: "", playsinline: "", preload: "auto", controls: "" });
+    vid.muted = true; vid.defaultMuted = true; vid.src = v.src;
+    if (v.letter) card.append(el("div", { class: "top" }, [el("div", { class: "badge" }, [v.letter])].concat(v.label ? [el("span", { class: "vlabel" }, [v.label])] : [])));
+    card.append(vid);
+    host.append(card);
+  });
+  playAll();
+}
+// Playback (user's feedback 2026-11-03): the clips play ONE AFTER THE OTHER, each once, and stop on their last frame; the
+// card that is playing is marked; "Play again" / Space restarts the sequence. The native controls still play a single clip.
+let armed = false, seqId = 0;
+function playAll(){
+  if ($("#namebox").classList.contains("open")) return;          // not before the name is in; the dialog's Start restarts the clips
+  const vids = [...document.querySelectorAll("#cards video")]; const my = ++seqId;
+  vids.forEach(v => { v.pause(); v.onended = null; v.currentTime = 0; });
+  const mark = k => document.querySelectorAll("#cards .card").forEach((c, j) => c.classList.toggle("playing", j === k));
+  const step = k => {
+    if (my !== seqId) return;
+    mark(k);
+    if (k >= vids.length) return;
+    const v = vids[k]; v.onended = () => step(k + 1);
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {
+      if (armed) return; armed = true;
+      status("Click anywhere (or press a key) to start the clips.");
+      const kick = () => { armed = false; status(""); playAll(); };
+      for (const ev of ["pointerdown", "keydown", "touchstart"]) document.addEventListener(ev, kick, { once: true, capture: true });
+    });
+  };
+  step(0);
+}
+
+function draw(){
+  const it = cur(), r = R[key(it.id)] || { best: null, note: "" };
+  $("#sub").textContent = `situation ${i + 1}`;
+  $("#count").textContent = `${i + 1} / ${M.items.length}`;
+  const nd = nDone();
+  $("#prog").style.width = (100 * nd / M.items.length) + "%";
+  $("#saved").textContent = rater() ? `${SERVER ? "saved" : "kept"} ${nd}/${M.items.length}` : "name needed";
+  document.querySelectorAll("#cards .card").forEach(card => {
+    const L = card.dataset.l; card.classList.toggle("best", !!L && r.best === L);
+  });
+  document.querySelectorAll("#best button").forEach(b => b.setAttribute("aria-pressed", String(r.best === b.dataset.l)));
+  if (document.activeElement !== $("#note")) $("#note").value = r.note || "";
+  for (const [sid, b] of Object.entries(gridBtns)){ b.classList.toggle("done", done(sid)); b.classList.toggle("cur", sid === it.id); }
+}
+
+let gridBtns = {};
+function buildGrid(){
+  const host = $("#grid"); host.textContent = ""; gridBtns = {};
+  M.items.forEach((it, n) => {
+    const b = el("button", { title: `situation ${n + 1}` }, [String(n + 1)]);
+    b.onclick = () => { if (dirty) save(); i = n; buildCards(); draw(); };
+    gridBtns[it.id] = b; host.append(b);
+  });
+}
+function go(d){
+  const n = Math.min(M.items.length - 1, Math.max(0, i + d));
+  if (n === i) return;
+  if (dirty) save();
+  i = n; buildCards(); draw();
+}
+function nextUnjudged(){
+  if (needName()) return;
+  for (let k = 1; k <= M.items.length; k++){
+    const n = (i + k) % M.items.length;
+    if (!done(M.items[n].id)){ if (dirty) save(); i = n; buildCards(); draw(); return; }
+  }
+  status(SERVER ? "You have answered every situation. Thank you!" : "You have answered every situation. Press Submit my answers if you have not yet. Thank you!", false);
+}
+
+document.addEventListener("keydown", e => {
+  const t = e.target; if (t && (t.tagName === "TEXTAREA" || t.tagName === "INPUT")) return;
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (k in KEYS) { e.preventDefault(); setBest(KEYS[k]); return; }
+  if (k === " ") { e.preventDefault(); playAll(); return; }
+  if (k === "arrowright") { e.preventDefault(); go(1); return; }
+  if (k === "arrowleft") { e.preventDefault(); go(-1); return; }
+  if (k === "s") { e.preventDefault(); nextUnjudged(); }
+});
+
+function download(name, text, type){
+  const a = el("a", { href: URL.createObjectURL(new Blob([text], { type })), download: name });
+  document.body.append(a); a.click(); a.remove();
+}
+function csv(){
+  const rows = [["reviewer", "situation", "answer", "note", "at"]];
+  for (const [k, v] of Object.entries(mine())) rows.push([rater(), k.split("::")[1], v.best, (v.note || "").replace(/\s+/g, " "), v.at || ""]);
+  return rows.map(r => r.map(x => `"${String(x == null ? "" : x).replace(/"/g, '""')}"`).join(",")).join("\n");
+}
+
+(async function init(){
+  M = await (await fetch("manifest.json")).json();
+  try { $("#rater").value = localStorage.getItem("video_gen_review_rater") || ""; } catch (e) {}
+  load();
+  const bestHost = $("#best");
+  for (const [L, label] of OPTIONS){ const b = el("button", { "data-l": L }, [label]); b.onclick = () => setBest(L); bestHost.append(b); }
+  buildGrid();
+  $("#rater").oninput = () => { try { localStorage.setItem("video_gen_review_rater", rater()); } catch (e) {}
+    load(); if (rater()) { $("#who").classList.remove("missing"); status(""); } draw(); };
+  $("#prev").onclick = () => go(-1);
+  $("#next").onclick = () => go(1);
+  $("#skip").onclick = nextUnjudged;
+  $("#replay").onclick = playAll;
+  if (SERVER){
+    $("#csv").onclick = () => { if (needName()) return; download(`bball_pair_${rater()}.csv`, csv(), "text/csv"); };
+    await poll(); setInterval(poll, 20000);
+  } else {
+    $("#submit").onclick = submit;
+    $("#json").onclick = () => { if (needName()) return; download(`bball_pair_${rater()}.json`, JSON.stringify(answers(), null, 1), "application/json"); };
+  }
+  $("#note").oninput = () => { if (needName()) return; rec().note = $("#note").value; dirty = true; };
+  $("#note").onblur = () => { if (dirty) save(); };
+  window.addEventListener("beforeunload", () => { if (dirty) save(); });
+  $("#nameform").onsubmit = e => { e.preventDefault(); const v = ($("#rater2").value || "").trim(); if (!v) return;
+    $("#rater").value = v; $("#rater").oninput(); $("#namebox").classList.remove("open"); $("#who").classList.remove("missing"); status("");
+    const f = M.items.findIndex(x => !done(x.id)); i = f < 0 ? 0 : f; buildCards(); draw(); };
+  const first = rater() ? M.items.findIndex(x => !done(x.id)) : 0;
+  i = first < 0 ? 0 : first;
+  if (!rater()) askName();                      // open the dialog BEFORE the clips are built, so they wait for the name
+  buildCards(); draw();
+})();
+</script></body></html>
