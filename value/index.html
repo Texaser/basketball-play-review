@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Which shot is the more valuable shot: more likely to score, with a three-pointer worth more than a two?</title>
+<title>Which shot has the higher scoring probability?</title>
 <style>
 :root{
   --paper:#F1F4F4; --surface:#fff; --ink:#14191a; --muted:#58696c; --rule:#c9d6d7; --rule-soft:#e1eaea;
@@ -108,7 +108,7 @@ body.mode-public .wrap .tabs{display:flex}
 <aside class="side">
 <div class="answer">
 <fieldset class="task">
-  <p class="key">Which shot is the more valuable shot: more likely to score, with a three-pointer worth more than a two?</p>
+  <p class="key">Which shot has the higher scoring probability?</p>
   <div class="bestrow " id="best"></div>
 </fieldset>
 <textarea id="note" placeholder="Why, or what made it hard (optional)"></textarea>
@@ -130,7 +130,7 @@ body.mode-public .wrap .tabs{display:flex}
 <div class="status" id="status"></div>
 <div class="grid" id="grid"></div>
 <details><summary>Keys</summary>
-  <p class="hint"><kbd>A</kbd> / <kbd>B</kbd> (or <kbd>1</kbd> / <kbd>2</kbd>) more valuable · <kbd>C</kbd> or <kbd>3</kbd> comparable · <kbd>4</kbd> or <kbd>0</kbd> cannot judge · <kbd>Space</kbd> play again · <kbd>&larr;</kbd> <kbd>&rarr;</kbd> previous / next · <kbd>S</kbd> next unjudged.</p>
+  <p class="hint"><kbd>A</kbd> / <kbd>B</kbd> (or <kbd>1</kbd> / <kbd>2</kbd>) more likely to score · <kbd>C</kbd> or <kbd>3</kbd> comparable · <kbd>4</kbd> or <kbd>0</kbd> cannot judge · <kbd>Space</kbd> play again · <kbd>&larr;</kbd> <kbd>&rarr;</kbd> previous / next · <kbd>S</kbd> next unjudged.</p>
 </details>
 </aside>
 </div>
@@ -144,7 +144,7 @@ const SUBMIT_URL = "https://formspree.io/f/xdkeaypg";
 const STUDY = "bball_value_v1";
 const OPTIONS = [["A", "A"], ["B", "B"], ["comparable", "Comparable"], ["cannot", "Cannot judge"]];      // [[value, label], ...]; a value equal to a card letter also puts a button under that card
 const KEYS = {"a": "A", "1": "A", "b": "B", "2": "B", "c": "comparable", "3": "comparable", "4": "cannot", "0": "cannot"};            // key -> value
-const CARD_BTN = "{L} is the more valuable shot";     // label template with {L}, or null
+const CARD_BTN = "{L} is more likely to score";     // label template with {L}, or null
 let M = null, R = {}, i = 0, dirty = false, autoSent = false;
 const $ = s => document.querySelector(s);
 const el = (t, a = {}, kids = []) => { const n = document.createElement(t);
